@@ -1,0 +1,45 @@
+.container {
+    max-width: 500px;
+    margin: auto;
+}
+
+.form-control {
+    padding-right: 40px;
+}
+
+#togglePassword {
+    cursor: pointer;
+}
+
+.h-5px {
+    height: 5px;
+}
+
+.bg-active-success {
+    background-color: #0d6efd !important; /* Changeable */
+}
+
+.bg-secondary {
+    background-color: #e9ecef !important;
+}
+
+#passwordInfo ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#passwordInfo ul li {
+    margin-bottom: 10px;
+}
+
+.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+.bg-warning {
+    background-color: #ffc107 !important;
+}
+
+.bg-success {
+    background-color: #28a745 !important;
+}

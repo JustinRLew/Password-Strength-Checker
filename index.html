@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div data-kt-password-meter="true" class="position-relative">
+            <!--begin::Label-->
+            <label for="new_password" class="form-label text-center d-block">New Password</label>
+            <!--end::Label-->
+
+            <!--begin::Input Group-->
+            <div class="position-relative mb-3">
+                <!--begin::Input-->
+                <input class="form-control form-control-lg"
+                    id="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    name="new_password"
+                    autocomplete="off" />
+                <!--end::Input-->
+
+                <!--begin::Visibility toggle-->
+                <span class="btn btn-sm btn-icon position-absolute top-50 end-0 translate-middle-y me-2"
+                    id="togglePassword" data-kt-password-meter-control="visibility">
+                    <!-- Default to the "not visible" icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill" id="eyeIcon" viewBox="0 0 16 16">
+                        <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z"/>
+                        <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"/>
+                    </svg>
+                </span>
+                <!--end::Visibility toggle-->
+            </div>
+
+            <!--begin::Highlight meter-->
+            <div class="d-flex align-items-center mb-3" data-kt-password-meter-control="highlight">
+                <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
+            </div>
+            <!--end::Highlight meter-->
+
+            <small class="form-text text-muted text-center d-block">
+                Use 8 or more characters with a mix of letters, numbers & symbols
+            </small>
+        </div>
+
+        <!-- Centering the button -->
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-primary mt-3" id="showPasswordStrength">Show Password Strength</button>
+        </div>
+
+        <!-- Modal for password score and NIST Guidelines -->
+        <div class="modal fade" id="passwordStrengthModal" tabindex="-1" aria-labelledby="passwordStrengthModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <div class="mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="green" viewBox="0 0 24 24">
+                                <path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm-1.165 18.775-4.824-4.734L7.58 12.46l3.264 3.204L16.43 9.97l1.402 1.402-6.996 7.403z"></path>
+                            </svg>
+                        </div>
+                        <h5 id="passwordStrengthLabel">Password Strength: Weak</h5>
+
+                        <!-- Line break to create space between password strength and NIST guidelines -->
+                        <br>
+
+                        <!-- NIST Guidelines -->
+                        <h6>NIST Password Guidelines (As of 2024)</h6>
+                        <div class="text-start">
+                            <p>As of 2024, the National Institute of Standards and Technology (NIST) has updated its guidelines on password complexity and management in Special Publication 800-63B (Digital Identity Guidelines: Authentication and Lifecycle Management). Here are the key practices recommended by NIST regarding password complexity:</p>
+                            <ul>
+                                <li><strong>Length over Complexity</strong>: Minimum password length is 8 characters for user-chosen passwords. Longer passphrases (16 characters) are more effective than arbitrary complexity rules.</li>
+                                <li><strong>Avoid Mandatory Complexity Requirements</strong>: NIST discourages requiring a mix of uppercase, lowercase, numbers, and special characters. It often leads to weaker, predictable passwords.</li>
+                                <li><strong>Ban Common Passwords</strong>: Systems should block the use of common passwords found in breach databases or that contain dictionary words or user information.</li>
+                                <li><strong>No Mandatory Periodic Changes</strong>: NIST advises against periodic password changes unless there’s evidence of compromise.</li>
+                                <li><strong>Password Reuse Restrictions</strong>: Prevent reuse of recent passwords to protect against the reuse of compromised passwords.</li>
+                                <li><strong>Allow Password Managers</strong>: Encourage the use of password managers to generate and store strong, unique passwords.</li>
+                                <li><strong>Multi-Factor Authentication (MFA)</strong>: NIST recommends MFA for stronger security. MFA adds extra protection with something the user knows (password), has (token), or is (biometric).</li>
+                                <li><strong>Avoid Knowledge-Based Authentication (KBA)</strong>: Do not use security questions for password recovery. KBA is insecure and easily guessable.</li>
+                            </ul>
+                        </div>
+
+                        <button type="button" class="btn btn-primary mt-3" id="closeModal">Ok, got it!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS for modal functionality -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
