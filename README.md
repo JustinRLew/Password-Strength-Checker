@@ -12,13 +12,13 @@ A web-based password strength checker that evaluates passwords in real-time base
 Here are a few screenshots of the password strength checker in action:
 
 ### Password Input Field and Strength Meter:
-![Password Strength Checker Screenshot 1](password_strength_checker_screenshot1.png)
+![Password Strength Checker Screenshot 1](screenshots/password_strength_checker_screenshot1.png)
 
 ### Strength Meter Showing Medium Password:
-![Password Strength Checker Screenshot 2](password_strength_checker_screenshot2.png)
+![Password Strength Checker Screenshot 2](screenshots/password_strength_checker_screenshot2.png)
 
 ### NIST Guidelines and Password Strength Modal:
-![Password Strength Checker Screenshot 3](password_strength_checker_screenshot3.png)
+![Password Strength Checker Screenshot 3](screenshots/password_strength_checker_screenshot3.png)
 
 ## Technologies Used
 - **HTML5**: Structure of the web page.
