@@ -1,5 +1,7 @@
 # Password Strength Checker
 
+https://youtu.be/Gs0U9M6ix0w
+
 A web-based password strength checker that evaluates passwords in real-time based on NIST guidelines. It provides visual feedback, displays password strength, and offers recommendations for improving password security.
 
 ## Features
